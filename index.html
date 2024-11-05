@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate House</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1><center>Welcome to the Chocolate House</center></h1>
+    
+    <h2>Add Seasonal Flavor</h2>
+    <form action="/add_flavor" method="post">
+        <label>Name: <input type="text" name="name" required></label>
+        <label>Description: <textarea name="description"></textarea></label>
+        <label>Available From: <input type="date" name="available_from" required></label>
+        <label>Available To: <input type="date" name="available_to" required></label>
+        <button type="submit">Add Flavor</button>
+    </form>
+
+    <h2>Add Ingredient to Inventory</h2>
+    <form action="/add_ingredient" method="post">
+        <label>Ingredient: <input type="text" name="ingredient" required></label>
+        <label>Quantity: <input type="number" name="quantity" required></label>
+        <button type="submit">Add Ingredient</button>
+    </form>
+
+    <h2>Customer Suggestions</h2>
+    <form action="/add_suggestion" method="post">
+        <label>Select Flavor:
+            <select name="flavor_id" required>
+                {% for flavor in flavors %}
+                    <option value="{{ flavor['id'] }}">{{ flavor['name'] }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Suggestion: <textarea name="suggestion" required></textarea></label>
+        <label>Allergy Concerns: <input type="text" name="allergy_concerns"></label>
+        <button type="submit">Submit Suggestion</button>
+    </form>
+
+    <h2>Seasonal Flavors</h2>
+    <ul>
+        {% for flavor in flavors %}
+            <li>{{flavor['name'] }} - {{ flavor['description'] }} (Available from {{ flavor['available_from'] }} to {{ flavor['available_to'] }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Ingredient Inventory</h2>
+    <ul>
+        {% for ingredient in inventory %}
+            <li>{{ ingredient['ingredient'] }} - Quantity: {{ ingredient['quantity'] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Customer Suggestions</h2>
+    <ul>
+        {% for suggestion in suggestions %}
+            <li>Flavor: {{ suggestion['name'] }} - Suggestion: {{ suggestion['suggestion'] }} (Allergy: {{ suggestion['allergy_concerns'] }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
