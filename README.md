@@ -1,6 +1,6 @@
  Chocolate-House-management-system
 
-Welcome to the Chocolate House Management Application! This is a simple Python application designed to help manage a fictional chocolate house’s seasonal flavor offerings, ingredient inventory, and customer flavor suggestions, including allergy concerns. The application uses SQLite for data management.
+Welcome to the Chocolate House Management Application! This is a simple Python application designed to help manage a fictional chocolate house’s seasonal flavor offerings, ingredient inventory, and customer flavor suggestions, including allergy concerns. The application uses SQLite for data.
 
 Features
 
